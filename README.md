@@ -4,7 +4,8 @@ A Inventory Management PWA app using QR code
 
 ------------
 
-# QR CODE DATA FORMAT - {"org" : "Airport Authority of India", "sn" : "xxx"}
+# QR CODE DATA 
+FORMAT - {"org" : "Airport Authority of India", "sn" : "xxx"}
 
 ------------
 
