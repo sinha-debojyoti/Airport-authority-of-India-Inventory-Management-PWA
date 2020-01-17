@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <style>
+        .my-custom-scrollbar {
+            position: relative;
+            overflow: auto;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <br>
+        {% if datas == [] %}
+            <div class="alert alert-danger" role="alert">
+                No Maintenance Report Found
+            </div>
+
+            <form method="post" action="/login">
+                <button type="submit" class="btn btn-primary">UPDATE</button>
+            </form>
+        {% else %}
+
+            <form method="post" action="/login">
+                <button type="submit" class="btn btn-primary">UPDATE</button>
+            </form>
+
+            {#            <div class="input-group input-group-lg">#}
+            {#                <input id="myInput" autocomplete="off" type="text" class="form-control" placeholder="Search...">#}
+            {#            </div>#}
+
+            </br>
+
+
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table id="dtBasicExample" class="table" cellspacing="0" width="100%">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">SN</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Maintenance Report</th>
+                        <th scope="col">Maintenanced By</th>
+                        <th scope="col">Datetime</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myTable">
+                    {% for data in datas -%}
+                        <tr class="bg-light">
+                            <td>{{ data.MaintenanceReport.sn }}</td>
+                            <td>{{ data.Products.product_name }}</td>
+                            <td>{{ data.MaintenanceReport.report }}</td>
+                            <td>{{ data.MaintenanceReport.username }}</td>
+                            <td>{{ data.MaintenanceReport.datetime }}</td>
+                        </tr>
+                    {%- endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
